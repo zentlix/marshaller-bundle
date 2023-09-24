@@ -1,0 +1,48 @@
+{
+    "name": "zentlix/marshaller-bundle",
+    "description": "Provides an integration of Marshaller into the Symfony framework",
+    "type": "symfony-bundle",
+    "keywords": [
+        "symfony",
+        "marshaller",
+        "serializer"
+    ],
+    "homepage": "https://github.com/zentlix/marshaller-bundle",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.1",
+        "spiral/marshaller": "^1.0",
+        "symfony/config": "^6.3",
+        "symfony/dependency-injection": "^6.3",
+        "symfony/http-kernel": "^6.3"
+    },
+    "require-dev": {
+        "symfony/framework-bundle": "^6.3",
+        "roave/security-advisories": "dev-latest",
+        "phpunit/phpunit": "^10.2",
+        "friendsofphp/php-cs-fixer": "^3.19",
+        "matthiasnoback/symfony-config-test": "^4.3",
+        "matthiasnoback/symfony-dependency-injection-test": "^4.3.1",
+        "vimeo/psalm": "^5.13",
+        "symfony/uid": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zentlix\\MarshallerBundle\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Zentlix\\MarshallerBundle\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "psalm": "vendor/bin/psalm --config=psalm.xml ./src"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
