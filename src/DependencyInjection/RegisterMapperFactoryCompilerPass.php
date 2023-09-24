@@ -46,18 +46,14 @@ final class RegisterMapperFactoryCompilerPass implements CompilerPassInterface
         $reflectionClass = new \ReflectionClass($definitionClass);
 
         if (!$reflectionClass->implementsInterface($interface)) {
-            throw new \InvalidArgumentException(
-                sprintf('Service `%s` must implement interface `%s`.', $definitionClass, $interface)
-            );
+            throw new \InvalidArgumentException(sprintf('Service `%s` must implement interface `%s`.', $definitionClass, $interface));
         }
     }
 
     private function assertContainerHasDefinition(ContainerBuilder $container, string $definitionId): void
     {
         if (!$container->hasDefinition($definitionId)) {
-            throw new \InvalidArgumentException(
-                sprintf('Service id `%s` could not be found in container.', $definitionId)
-            );
+            throw new \InvalidArgumentException(sprintf('Service id `%s` could not be found in container.', $definitionId));
         }
     }
 }
