@@ -7,14 +7,17 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 use Spiral\Attributes\Factory;
 use Spiral\Attributes\ReaderInterface;
 use Spiral\Marshaller\Mapper\AttributeMapperFactory;
-use Spiral\Marshaller\Marshaller;
 use Spiral\Marshaller\MarshallerInterface;
+use Zentlix\MarshallerBundle\Marshaller;
+use Zentlix\MarshallerBundle\Type\Type;
 use Zentlix\MarshallerBundle\Type\UuidType;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->services()
+        ->set('marshaller.attribute_reader_factory', Factory::class)
+
         ->set('marshaller.attribute_reader', ReaderInterface::class)
-            ->factory([Factory::class, 'create'])
+            ->factory([service('marshaller.attribute_reader_factory'), 'create'])
 
         ->set('marshaller.attribute_mapper_factory', AttributeMapperFactory::class)
             ->args([
@@ -29,9 +32,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
         ->alias(MarshallerInterface::class, Marshaller::class)
 
-        ->set('marshaller.type.symfony_uuid', UuidType::class)
+        ->set('marshaller.type.symfony_uuid', Type::class)
             ->args([
-                service('marshaller'),
+                UuidType::class,
             ])
             ->tag('marshaller.type')
     ;
