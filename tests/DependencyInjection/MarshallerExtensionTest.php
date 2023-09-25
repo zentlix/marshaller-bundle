@@ -6,9 +6,9 @@ namespace Zentlix\MarshallerBundle\Tests\DependencyInjection;
 
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
 use Spiral\Attributes\ReaderInterface;
-use Spiral\Marshaller\Marshaller;
 use Spiral\Marshaller\MarshallerInterface;
 use Zentlix\MarshallerBundle\DependencyInjection\MarshallerExtension;
+use Zentlix\MarshallerBundle\Marshaller;
 
 final class MarshallerExtensionTest extends AbstractExtensionTestCase
 {
